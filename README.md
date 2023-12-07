@@ -1,0 +1,1 @@
+Trying to learn and implement a doodle recognition using NN in C++ with GTKmm
