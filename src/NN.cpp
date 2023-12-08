@@ -41,7 +41,7 @@ vector<double> NN::guess(const vector<double> &input) const{
     }
     Matrix processedInput(input.size(),1);
     for(int i=0;i<input.size();i++){
-        processedInput[i][0]=input[i];
+        processedInput[i][0]=2*input[i]-1;
     }
     processedInput.normalize(sigmoid);
     for(auto weight:weights){
@@ -65,7 +65,7 @@ void NN::train(const vector<double> &input,const vector<double> &expectedOutput)
     //converting the input into a matrix
     Matrix inputMatrix(input_size,1);
     for(int i=0;i<input_size;i++){
-        inputMatrix[i][0]=input[i];
+        inputMatrix[i][0]=2*input[i]-1;
     }
 
     // finding out outputs, outputs without applying sigmoid at each layer
