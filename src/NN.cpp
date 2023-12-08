@@ -25,6 +25,16 @@ NN::NN(const vector<int> &nodesCount){
     output_size=nodesCount[nodesCount.size()-1];
 }
 
+void NN::randomizeWeights(double minR,double maxR){
+    for(auto &weight:weights){
+        for(int i=0;i<weight.getRowCount();i++){
+            for(int j=0;j<weight.getColumnCount();j++){
+                weight[i][j]=getRandom(minR,maxR);
+            }
+        }
+    }
+}
+
 vector<double> NN::guess(const vector<double> &input) const{
     if(input.size()!=input_size){
         throw std::runtime_error("Size of the input dosen't match the nodes in layer first layer.");

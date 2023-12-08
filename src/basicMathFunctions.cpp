@@ -1,5 +1,6 @@
 #include "basicMathFunctions.h"
-
+#include<time.h>
+#include<random>
 namespace Math
 {
     double expo(double x){
@@ -12,5 +13,11 @@ namespace Math
             current/=i;
         }
         return result;
+    }
+    double getRandom(double minR,double maxR){
+        static std::random_device randomDevice;
+        static std::default_random_engine randomEngine(randomDevice());
+        static std::uniform_real_distribution<long double> dist(0,1);
+        return minR+(maxR-minR)*dist(randomEngine);
     }
 } // namespace Math

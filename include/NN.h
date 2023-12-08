@@ -13,11 +13,11 @@ class NN{
     static double sigmoid(const double &value);
     static double sigmoidDerivative(const double &value);
 
-    const double learning_rate_weights=0.05;
+    const double learning_rate_weights=0.01;
     const double learning_rate_backPropagationErrors=1;
     public:
     NN(const vector<int> &nodesCount);
-
+    void randomizeWeights(double minR,double maxR);
     vector<double> guess(const vector<double> &input) const;
 
     void train(const vector<double> &input,const vector<double> &expectedOutput);
