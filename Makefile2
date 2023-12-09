@@ -1,0 +1,27 @@
+BUID_DIR:=./build
+SRC_DIR:=./src
+INCLUDE_DIR:=./include
+CXX:=g++
+SRC_FILES:=$(wildcard $(SRC_DIR)/*.cpp)
+CXXFLAGS:=$(shell pkg-config --cflags gtkmm-4.0)
+CXXLIBS:=$(shell pkg-config --libs gtkmm-4.0)
+
+output_name:=main
+
+run: build
+	$(BUID_DIR)/$(output_name)
+build: $(BUID_DIR)/$(output_name)
+
+$(BUID_DIR)/$(output_name): $(SRC_FILES)
+	mkdir -p $(BUID_DIR)
+	g++ $(SRC_FILES) -I $(INCLUDE_DIR) $(CXXLIBS) $(CXXFLAGS) -o $(BUID_DIR)/$(output_name)
+
+train_minist: src/main_trainOnMnist.cpp src/NN.cpp src/Matrix.cpp src/basicMathFunctions.cpp
+	g++ src/main_trainOnMnist.cpp src/NN.cpp src/Matrix.cpp src/basicMathFunctions.cpp -I include/ -o $(BUID_DIR)/train_minist
+	$(BUID_DIR)/train_minist
+test_minist: src/main_testOnMnist.cpp src/NN.cpp src/Matrix.cpp src/basicMathFunctions.cpp
+	g++ src/main_testOnMnist.cpp src/NN.cpp src/Matrix.cpp src/basicMathFunctions.cpp -I include/ -o $(BUID_DIR)/test_minist
+	$(BUID_DIR)/test_minist
+tnn_minist: src/nntest.cpp src/NN.cpp src/Matrix.cpp src/basicMathFunctions.cpp
+	g++ src/nntest.cpp src/NN.cpp src/Matrix.cpp src/basicMathFunctions.cpp -I include/ -o $(BUID_DIR)/tnn_minist
+	$(BUID_DIR)/tnn_minist

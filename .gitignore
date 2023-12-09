@@ -1,0 +1,5 @@
+build/
+.vscode/
+*.nnFile
+*.csv
+*.txt

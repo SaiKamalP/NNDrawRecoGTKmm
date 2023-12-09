@@ -13,8 +13,8 @@ class NN{
     static double sigmoid(const double &value);
     static double sigmoidDerivative(const double &value);
 
-    const double learning_rate_weights=0.01;
-    const double learning_rate_backPropagationErrors=1;
+    const double learning_rate_weights=0.1;
+    const double learning_rate_backPropagationErrors=8;
     public:
     NN(const vector<int> &nodesCount);
     void randomizeWeights(double minR,double maxR);
